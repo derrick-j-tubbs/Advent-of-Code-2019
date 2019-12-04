@@ -1,33 +1,34 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace Advent_of_Code_2019 {
    
     public class AOC2019_Day4 {
         public bool passwordTester(string password) {
-            bool hasDouble = false;
-            bool decreases = false;
-            char lastChar = ' ';
+            bool[] hasDouble = new bool[6];
+            char lastChar = password[0];
+            char twoPrev = ' ';
             if (password.Length != 6) {
                 return false;
             }
-            foreach (char currentChar in password) {
-                if (lastChar != ' ') {
-                    if (currentChar == lastChar) {
-                        //Console.WriteLine("has double");
-                        hasDouble = true;
-                    }
-                    
-                    if (currentChar < lastChar) {
-                        decreases = true;
-                        //Console.WriteLine("decreases");
-                    }
+            for (int i = 1; i < password.Length; i++) {
+                if (password[i] < lastChar) {
+                    return false;
                 }
-                lastChar = currentChar;
+                if (password[i] == lastChar && password[i] != twoPrev) {
+                    hasDouble[i-1] = true;
+                }
+                if (password[i] == lastChar && password[i] == twoPrev) {
+                    hasDouble[i-2] = false;
+                }
+                twoPrev = lastChar;
+                lastChar = password[i];
             }
-            return hasDouble && !decreases;
+            return hasDouble.Any(x => x == true);
         }
+        
         public List<int> passwordRange(int rangeStart, int rangeEnd) {
             List<int> passwords = new List<int>();
             for (int i = rangeStart; i <= rangeEnd; i++) {
