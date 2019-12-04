@@ -31,7 +31,7 @@ namespace Advent_of_Code_2019
             stopwatch.Stop();
             Console.WriteLine($"Day 2 Execution time: { stopwatch.ElapsedMilliseconds } ms");
 */
-            // day 3
+            /* // day 3
             var day3 = new AOC2019_Day3();
             var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
@@ -40,8 +40,22 @@ namespace Advent_of_Code_2019
             day3.mapCollisions(inputs.wire1, inputs.wire2);
             stopwatch.Stop();
             Console.WriteLine($"Day 3 Execution time: { stopwatch.ElapsedMilliseconds } ms");
-
-
+ */
+            // day 4
+            var day4 = new AOC2019_Day4();
+            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+            //Console.WriteLine(day4.passwordTester("111111"));
+            //Console.WriteLine(day4.passwordTester("223450"));
+            //Console.WriteLine(day4.passwordTester("1234789"));
+            //Console.WriteLine(day4.passwordTester("556699"));
+            //Console.WriteLine(day4.passwordTester("988546"));
+            //Console.WriteLine(day4.passwordTester("112223"));
+            //Console.WriteLine(day4.passwordTester("113333")); // true
+            //Console.WriteLine(day4.passwordTester("111333")); // false
+            //Console.WriteLine(day4.passwordTester("122333")); // true
+            Console.WriteLine(day4.findNumPasswords(206938, 679128));
+            stopwatch.Stop();
+            Console.WriteLine($"Day 4 Execution time: { stopwatch.ElapsedMilliseconds } ms");
         }           
     }
 }
